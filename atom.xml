@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>象牙の森</title>
   
-  
+  <subtitle>大道至简,行稳致远</subtitle>
   <link href="https://ivoryforest.github.io/atom.xml" rel="self"/>
   
   <link href="https://ivoryforest.github.io/"/>
-  <updated>2022-08-12T16:24:26.647Z</updated>
+  <updated>2022-08-13T18:30:49.071Z</updated>
   <id>https://ivoryforest.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用 Hexo + Butterfly + GitHub Pages 搭建个人博客</title>
+    <link href="https://ivoryforest.github.io/build-blog-hexo-butterfly.html"/>
+    <id>https://ivoryforest.github.io/build-blog-hexo-butterfly.html</id>
+    <published>2022-08-13T13:56:25.000Z</published>
+    <updated>2022-08-13T18:30:49.071Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p><p>Butterfly 是Hexo的一款精美主题，能让你的博客增色不少，并且文档齐全。</p><p>GitHub Pages 是免费的静态站点。</p><p>所以你只需要动动手指，就可以免费拥有一个属于自己的精美博客。</p><h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><p>在安装前，需要先安装下列应用程序</p><ul><li>nodejs(Node.js 版本需不低于 10.13，建议使用 Node.js 12.0 及以上版本)</li><li>git</li></ul><p>在 <a href="https://hexo.io/zh-cn/docs/index.html">Hexo官方文档</a> 中有介绍，这里就不多做说明。</p><h4 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h4><p>执行命令即可完成安装 Hexo</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="literal">-g</span> hexo<span class="literal">-cli</span></span><br></pre></td></tr></table></figure><p>安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line"><span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure><p>继续执行命令，启动服务器</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g  <span class="comment"># 编译生成</span></span><br><span class="line">hexo s  <span class="comment"># 启动服务</span></span><br></pre></td></tr></table></figure><p>默认情况下，访问网址为： <a href="http://localhost:4000/">http://localhost:4000/</a></p><h4 id="安装butterfly"><a href="#安装butterfly" class="headerlink" title="安装butterfly"></a>安装butterfly</h4><p>这里可以参考一下 <a href="https://butterfly.js.org/posts/21cfbf15/">Butterfly安装文档</a>。</p><p>执行命令</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone <span class="literal">-b</span> master https://github.com/jerryc127/hexo<span class="literal">-theme-butterfly</span>.git themes/butterfly</span><br></pre></td></tr></table></figure><p>并修改Hexo根目录下的_config.yml，把主题改为butterfly。</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">butterfly</span></span><br></pre></td></tr></table></figure><p>并且安装相关的插件</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo<span class="literal">-renderer-pug</span> hexo<span class="literal">-renderer-stylus</span> <span class="literal">--save</span></span><br></pre></td></tr></table></figure><p>并且依据官方的建议把themes&#x2F;butterfly&#x2F;_config.yml复制到Hexo根目录并更名为_config.butterfly.yml。</p><p>接下来，我们执行命令</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure><p>我们就可以直接在自己浏览器上看到主题已经变为butterfly</p><h2 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h2><p>发布前需要在github新建一个项目，用来存储静态网页，并且生成站点。</p><h4 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h4><p>如果第一次需要设置用户名和邮箱:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;your username&quot;</span><br><span class="line">git config --global user.email &quot;your email&quot;</span><br></pre></td></tr></table></figure><p>生成公钥</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh<span class="literal">-keygen</span> <span class="literal">-t</span> rsa</span><br></pre></td></tr></table></figure><p>在当前用户目录下进入.ssh文件夹能发现id_rsa.pub。在github上添加Deploy keys，把id_rsa.pub内容复制进去即可。</p><p>最后可以测试一下连接</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh <span class="literal">-T</span> git@github.com</span><br></pre></td></tr></table></figure><p>如果测试成功，会有成功的回复。</p><h4 id="配置hexo发布插件"><a href="#配置hexo发布插件" class="headerlink" title="配置hexo发布插件"></a>配置hexo发布插件</h4><p>修改_config.yml，把仓库地址配置为之前生成的项目地址</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repository:</span> <span class="comment"># 你的仓库地址，例如：git@github.com:&lt;用户名&gt;/ivoryforest.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="comment"># 分支 例如：master</span></span><br></pre></td></tr></table></figure><p>配置正确，然后执行命令</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g  <span class="comment"># 编译生成</span></span><br><span class="line">hexo d  <span class="comment"># 发布</span></span><br></pre></td></tr></table></figure><p>如果没出问题的话，即可看到github项目中已经有内容了。（如果有问题多半是网络的问题）</p><h4 id="生成站点"><a href="#生成站点" class="headerlink" title="生成站点"></a>生成站点</h4><p>通过点击项目setting -&gt; pages 可以配置静态站点，如果是你免费会员，那么该项目必须是public的。</p><p>默认站点名称为https:&#x2F;&#x2F;&lt;用户名&gt;.github.io&#x2F;&lt;项目名&gt;，如果你想以根目录结尾，不显示项目名，那么你的项目名需要为(&lt;用户名&gt;.github.io)。</p><h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>到目前为止，你就拥有一个精美的个人网站了，但是维护好还需要坚持。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态</summary>
+      
+    
+    
+    
+    <category term="个人博客" scheme="https://ivoryforest.github.io/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+    <category term="hexo" scheme="https://ivoryforest.github.io/tags/hexo/"/>
+    
+    <category term="butterfly" scheme="https://ivoryforest.github.io/tags/butterfly/"/>
+    
+    <category term="github" scheme="https://ivoryforest.github.io/tags/github/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>

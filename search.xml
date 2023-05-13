@@ -1,6 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>centos上安装mongodb</title>
+    <url>/build-mongodb-on-centos.html</url>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>项目打算集成mongodb，把一些不定结构的数据存储到mongodb中。</p>
+<p>本文记录在centos上安装mongodb上，并且使用robo-3T连接mongodb遇到的问题。</p>
+<h2 id="安装mongodb"><a href="#安装mongodb" class="headerlink" title="安装mongodb"></a>安装mongodb</h2><p>选择版本，目前最新版本都已经到6.0，当然我连接mongodb的客户端为robo-3T，高级版本不支持。最新版本的robo-3T为1.4版，后续就转为Studio 3T了。robo-3T支持的最高的mongodb版本为4.2，所以我们就选择mongodb 4.2版本即可。</p>
+<p>从<a href="https://www.mongodb.com/docs/v4.2/tutorial/install-mongodb-on-red-hat/">官方教程</a>上直接可以看到安装流程，创建&#x2F;etc&#x2F;yum.repos.d&#x2F;mongodb-org-4.2.repo文件，写入内容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[mongodb-org-4.2]</span><br><span class="line">name=MongoDB Repository</span><br><span class="line">baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc</span><br></pre></td></tr></table></figure>
+
+<p>如果你用的是amazon aws上的主机，则改为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[mongodb-org-4.2]</span><br><span class="line">name=MongoDB Repository</span><br><span class="line">baseurl=https://repo.mongodb.org/yum/amazon/2/mongodb-org/4.2/x86_64/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc</span><br></pre></td></tr></table></figure>
+
+
+<p>然后执行命令即可安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo yum install -y mongodb-org</span><br></pre></td></tr></table></figure>
+
+<p>结束后，配置文件在&#x2F;etc&#x2F;mongod.conf，可以按需修改配置。如下命令操作mongodb服务</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl start mongod   # 启动</span><br><span class="line"></span><br><span class="line">sudo systemctl stop  mongod   # 停止</span><br><span class="line"></span><br><span class="line">sudo systemctl restart  mongod   # 重启</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="创建登陆用户"><a href="#创建登陆用户" class="headerlink" title="创建登陆用户"></a>创建登陆用户</h2><p>这时使用robo-3T直接连接mongodb是连接不通的，需要通过认证</p>
+<p>分别执行命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">./mongo  # 进入mongodb shell</span><br><span class="line"></span><br><span class="line">use admin;</span><br><span class="line"></span><br><span class="line">db.createUser(&#123;user:&quot;admin&quot;,pwd:&quot;admin&quot;,roles:[&#123;role:&quot;root&quot;,db:&quot;admin&quot;&#125;]&#125;); #  新建用户admin/admin, 权限为root</span><br><span class="line"></span><br><span class="line">db.auth(&quot;admin&quot;, &quot;admin&quot;); # 验证是否创建成功，返回1则表示成功</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">db.updateUser(<span class="string">&quot;admin&quot;</span>,&#123;<span class="built_in">pwd</span>:<span class="string">&quot;admin&quot;</span>&#125;); <span class="comment"># 更改密码指令</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置robo-3T连接mongodb"><a href="#配置robo-3T连接mongodb" class="headerlink" title="配置robo-3T连接mongodb"></a>配置robo-3T连接mongodb</h2><p>在编辑robo-3T配置的时候，除了连接地址配置外，还需要配置Authentication选项卡，勾选中<code>Perform authentication</code>，设置认证表以及认证用户即可。如图</p>
+<p><img src="/../images/1665292948049.jpg" alt="robo-3T 认证"></p>
+]]></content>
+      <tags>
+        <tag>mongodb</tag>
+        <tag>centos</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/hello-world.html</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>基于 vscode + wnmp + xdebug3 搭建PHP开发环境</title>
     <url>/build-php-dev-env.html</url>
     <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>前几天同事接了个私单，基于drupal开发的一个论坛系统，但是由于之前没有接触过PHP，并且项目比较紧急，所以邀请我和他一起研究这个。</p>
@@ -106,21 +155,16 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/hello-world.html</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
+    <title>nginx日志格式化以及打印输入参数结果输出</title>
+    <url>/nginx-log-format.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>nginx添加限流配置以及黑白名单</title>
+    <url>/nginx-ratelimit-and-blockip.html</url>
+    <content><![CDATA[]]></content>
+      <tags>
+        <tag>nginx</tag>
+      </tags>
   </entry>
 </search>

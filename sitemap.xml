@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ivoryforest.github.io/nginx-ratelimit-and-blockip.html</loc>
+    
+    <lastmod>2022-10-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ivoryforest.github.io/nginx-log-format.html</loc>
+    
+    <lastmod>2022-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ivoryforest.github.io/build-mongodb-on-centos.html</loc>
+    
+    <lastmod>2022-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://ivoryforest.github.io/build-php-dev-env.html</loc>
     
     <lastmod>2022-08-22</lastmod>
@@ -67,50 +94,71 @@
 
   <url>
     <loc>https://ivoryforest.github.io/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2023-05-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
+    <loc>https://ivoryforest.github.io/tags/mongodb/</loc>
+    <lastmod>2023-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ivoryforest.github.io/tags/centos/</loc>
+    <lastmod>2023-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://ivoryforest.github.io/tags/PHP/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2023-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://ivoryforest.github.io/tags/wnmp/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2023-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://ivoryforest.github.io/tags/xdebug/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2023-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://ivoryforest.github.io/tags/hexo/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2023-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://ivoryforest.github.io/tags/butterfly/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2023-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://ivoryforest.github.io/tags/github/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2023-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ivoryforest.github.io/tags/nginx/</loc>
+    <lastmod>2023-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -119,7 +167,7 @@
   
   <url>
     <loc>https://ivoryforest.github.io/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2023-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
